@@ -47,10 +47,9 @@ def play_black_jack():
         # dealer_card.append(deal_card())
         if sum(dealer_card) < sum(player_card) and sum(dealer_card) <= 15:
             dealer_card.append(deal_card())
+        check_winner(player_card, dealer_card)
     else:
         print("Invalid command!")
-
-    check_winner(player_card, dealer_card)
 
 
 is_playing = True
@@ -58,6 +57,11 @@ while is_playing:
     if input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
         player_card = [deal_card(), deal_card()]
         dealer_card = [deal_card(), deal_card()]
+
+        if sum(player_card) == 22:
+            player_card = [1, 11]
+        if sum(dealer_card) == 22:
+            dealer_card = [1, 11]
         play_black_jack()
     else:
         is_playing = False
