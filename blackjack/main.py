@@ -36,7 +36,10 @@ def play_black_jack():
     # If the player agree to pull another card from the deck
     if get_another_card.lower() == "y":
         # Player will draw another card from the deck
-        player_card.append(deal_card())
+        new_card = deal_card()
+        if new_card == 11 and sum(player_card) + new_card > 21:
+            new_card = 1
+        player_card.append(new_card)
         # If the sum of the players deck is greater than 21
         if sum(player_card) > 21:
             # Dealer wins
@@ -46,7 +49,10 @@ def play_black_jack():
     elif get_another_card.lower() == "n":
         # dealer_card.append(deal_card())
         if sum(dealer_card) < sum(player_card) and sum(dealer_card) <= 15:
-            dealer_card.append(deal_card())
+            new_card = deal_card()
+            if new_card == 11 and sum(dealer_card) + new_card > 21:
+                new_card = 1
+            dealer_card.append(new_card)
         check_winner(player_card, dealer_card)
     else:
         print("Invalid command!")
