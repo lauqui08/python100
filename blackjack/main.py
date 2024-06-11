@@ -28,7 +28,7 @@ def check_winner(player_card, dealer_card):
 
 
 def play_black_jack():
-    print(f"Your cards: {player_card}")
+    print(f"Your cards: {player_card}, current score: {sum(player_card)}")
     print(f"Computer's first card: {dealer_card[0]}")
 
     # The player where ask if he/she want another card from the deck
